@@ -10,17 +10,14 @@ const Photo = React.createClass({
       <figure className="grid-figure">
         <div className="grid-photo-wrap">
           <Link to={`/view/${post.code}`}>
-            <img className="grid-photo" src={post.display_src} alt={post.caption} />
+            <img src={post.display_src} alt={post.caption} className="grid-photo" />
           </Link>
-          <CSSTransitionGroup transitionName="like"
+          <CSSTransitionGroup
+            transitionName="like"
             transitionEnterTimeout={500}
-            transitionLeaveTimeout={500}>
-            <span
-              key={post.likes}
-              className="likes-heart"
-            >
-              {post.like}
-            </span>
+            transitionLeaveTimeout={500}
+          >
+            <span key={post.likes} className="likes-heart">{post.likes}</span>
           </CSSTransitionGroup>
         </div>
 
@@ -30,9 +27,8 @@ const Photo = React.createClass({
             <button onClick={this.props.increment.bind(null, index)} className="likes">&hearts; {post.likes}</button>
             <Link className="button" to={`/view/${post.code}`}>
               <span className="comment-count">
-                <span className="speech-bubble">
-                  {comments[post.code] ?  comments[post.code].length : 0}
-                </span>
+                <span className="speech-bubble"></span>
+                {comments[post.code] ? comments[post.code].length : 0 }
               </span>
             </Link>
           </div>
@@ -40,6 +36,6 @@ const Photo = React.createClass({
       </figure>
     )
   }
-})
+});
 
 export default Photo;
