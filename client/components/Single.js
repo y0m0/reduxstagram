@@ -1,6 +1,6 @@
 import React from 'react';
 import Photo from './Photo';
-// import Comments
+import Comments from './Comments';
 
 const Single = React.createClass({
   render() {
@@ -13,6 +13,7 @@ const Single = React.createClass({
     return (
       <div className="single-photo">
         <Photo index={i} post={post} {...this.props} />
+        <Comments />
       </div>
     )
   }
