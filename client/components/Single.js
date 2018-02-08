@@ -4,16 +4,19 @@ import Comments from './Comments';
 
 const Single = React.createClass({
   render() {
+    const { posts, comments, params } = this.props;
+
     // index of the post
-    const i = this.props.posts.findIndex((post) =>
-      post.code === this.props.params.postId);
+    const i = posts.findIndex((post) =>
+      post.code === params.postId);
     // get the post
-    const post = this.props.posts[i];
+    const post = posts[i];
+    const postComments = comments[params.postId] || [];
 
     return (
       <div className="single-photo">
         <Photo index={i} post={post} {...this.props} />
-        <Comments />
+        <Comments postComments={postComments} {...this.props} />
       </div>
     )
   }
